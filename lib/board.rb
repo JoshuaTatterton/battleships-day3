@@ -13,4 +13,9 @@ class Board
     board[y-1][x.ord-65] = ship
   end
 
+  def fire(x,y)
+  	fail "Out of bounds!" if board[y-1] == nil || board[y-1][x.ord-65] == nil
+  	board[y-1][x.ord-65] != "w" ? board[y-1][x.ord-65].hit : false 
+  end
+
 end
