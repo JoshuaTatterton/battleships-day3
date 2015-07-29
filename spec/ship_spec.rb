@@ -18,23 +18,26 @@ describe Ship do
   	it 'sets location and whether hit or not' do
   		ship2 = Ship.new(2,"horizontal")
   		ship2.set_location("A",1)
-  		expect(ship2.location).to eq [["A",1],["B",1]]
+  		expect(ship2.location).to eq [[["A",1],false],[["B",1],false]]
   	end
   end
   describe '#hit' do
-    it { expect(ship).to respond_to(:hit) }
+    it { expect(ship).to respond_to(:hit).with(1).argument }
     
-    it { expect(ship).to respond_to(:hit?) }
+    it { expect(ship).to respond_to(:hits) }
 
     it { expect(ship).to respond_to(:sunk?) }
 
     it 'will hit a ship' do
-      ship.hit
-      expect(ship).to be_hit
+    	ship.location = [[["A",1],false], [["A",1],false]]
+      ship.hit(0)
+      expect(ship.hits).to eq [true,false]
     end
 
     it 'will sunk the ship if hit all section of the ship' do
-      ship.hit
+    	ship.location = [[["A",1],false], [["A",1],false]]
+      ship.hit(0)
+      ship.hit(1)
       expect(ship).to be_sunk
     end
 
