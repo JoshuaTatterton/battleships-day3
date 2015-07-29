@@ -7,8 +7,20 @@ class Ship
     @position = position
     @size = size
     @direction = direction
+    @hit = false
+    @sunk = false
   end
-  def hit
 
+  def hit
+    @hit = true
   end
+
+  def hit? 
+    @hit
+  end
+
+  def sunk?
+  	@sunk = hit? ? true : false
+  end
+
 end
