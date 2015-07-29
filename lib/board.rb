@@ -1,10 +1,11 @@
 require_relative 'ship'
 class Board
 
-  attr_reader :board
+  attr_reader :board, :fire_log
 
   def initialize(ships = 0)
     @board = Array.new(10){ Array.new(10){"w"} }
+    @fire_log = []
   end
   
   def place(ship, x, y)
@@ -15,6 +16,7 @@ class Board
 
   def fire(x,y)
   	fail "Out of bounds!" if board[y-1] == nil || board[y-1][x.ord-65] == nil
+  	fire_log << [x,y]
   	board[y-1][x.ord-65] != "w" ? board[y-1][x.ord-65].hit : false 
   end
 
