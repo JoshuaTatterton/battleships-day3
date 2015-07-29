@@ -16,8 +16,8 @@ class Board
 
   def fire(x,y)
   	fail "Out of bounds!" if board[y-1] == nil || board[y-1][x.ord-65] == nil
-  	fire_log << [x,y]
-  	board[y-1][x.ord-65] != "w" ? board[y-1][x.ord-65].hit : false 
+  	a = board[y-1][x.ord-65] != "w" ? board[y-1][x.ord-65].hit : false 
+    fire_log << [[x,y],a]
+    a
   end
-
 end

@@ -1,7 +1,7 @@
 require 'board'
 
 describe Board do
-	let(:ship) {double :ship}
+  let(:ship) {double :ship}
 
   describe '#place' do
   	it { is_expected.to respond_to(:place).with(3).argument }
@@ -31,9 +31,10 @@ describe Board do
   	it "should not let you place a ship outside of the board" do
       expect{subject.fire("Z",20)}.to raise_error "Out of bounds!"
     end
+    it { is_expected.to respond_to(:fire_log)}
     it "should log where we fire" do
       subject.fire("A",1)
-      expect(subject.fire_log[0]).to eq ["A",1]
+      expect(subject.fire_log[0]).to eq [["A",1], false]
     end
 
   end

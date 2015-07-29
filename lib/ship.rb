@@ -3,8 +3,8 @@ class Ship
 
   attr_accessor :position, :size, :direction
 
-  def initialize(position, size, direction)
-    @position = position
+  def initialize(size, direction)
+   # @position = position
     @size = size
     @direction = direction
     @hit = false
