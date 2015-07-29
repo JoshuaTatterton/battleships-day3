@@ -1,14 +1,15 @@
 
 class Ship
 
-  attr_accessor :position, :size, :direction
+  attr_accessor :location, :size, :direction
 
   def initialize(size, direction)
    # @position = position
+    @location = Array.new(size)
     @size = size
     @direction = direction
-    @hit = false
-    @sunk = false
+    @hit = Array.new(size) { false }
+    # @sunk = false
   end
 
   def hit
@@ -20,7 +21,15 @@ class Ship
   end
 
   def sunk?
-  	@sunk = hit? ? true : false
+  	# @sunk = hit? ? true : false
+    @hit.include?(false)
+  end
+  def set_location(x,y)
+    i = 0 
+    size.times do 
+      location[i] = direction == "vertical" ? [x,y+i] : [(x.ord + i).chr,y]
+      i += 1
+    end
   end
 
 end

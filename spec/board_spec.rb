@@ -1,13 +1,13 @@
 require 'board'
 
 describe Board do
-  let(:ship) {double :ship}
+  let(:ship) {double :ship, size: 2, direction: "vertical", location: ["A",1], set_location: true }
 
   describe '#place' do
   	it { is_expected.to respond_to(:place).with(3).argument }
     it 'places ship in board location' do
       subject.place(ship,"A",1)
-      expect(subject.board[0][0]).to eq ship
+      expect(subject.board[0][0]).to eq "s"
     end
     it "should not let you place a ship outside of the board" do
       expect{subject.place(ship,"Z",20)}.to raise_error "Out of bounds!"

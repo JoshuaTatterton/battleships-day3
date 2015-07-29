@@ -26,4 +26,9 @@ describe "features" do
     board.fire("A",1)
     expect(board.fire_log[0]).to eq [["A",1],false]
   end
+  it "use various ship sizes" do
+    ship2 = Ship.new(2, "vertical")
+    expect(ship.size).not_to eq ship2.size
+  end
+  
 end
